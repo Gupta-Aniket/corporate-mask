@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Corporate Mask — Setup</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="cm-body">
+    <div class="cm-container-option">
+      <div class="cm-header">
+        <img
+          src="assets/icon128.png"
+          alt="Corporate Mask Logo"
+          class="cm-logo"
+        />
+        <h1>Corporate Mask</h1>
+        <p>Your rage-to-politeness translator</p>
+      </div>
+
+      <div class="cm-form" id="formSection">
+        <label for="apiKey">
+          Enter your
+          <a
+            href="https://aistudio.google.com/app/apikey"
+            target="_blank"
+            style="color: #007aff; text-decoration: none"
+          >
+            Gemini API Key 🔑 </a
+          >:
+        </label>
+        <input
+          type="password"
+          id="apiKey"
+          placeholder="Paste your API Key here"
+        />
+        <button class="cm-button" id="saveButton">Save and Start</button>
+      </div>
+
+      <div class="cm-status" id="statusSection" style="display: none">
+        <p>✅ API Key is already saved.</p>
+        <button class="cm-button" id="deleteButton">Delete API Key</button>
+      </div>
+
+      <div class="cm-footer">
+        <p>Your key is securely stored locally in your browser.</p>
+      </div>
+
+      <div class="cm-form" id="globalSettings">
+        <label>
+          <input type="checkbox" id="showMaskToggle" />
+          Show Floating Mask Button (Globally)
+        </label>
+
+        <br /><br />
+
+        <label for="blocklist">Blocked Sites (one domain per line):</label>
+        <textarea id="blocklist" rows="5" style="width: 100%"></textarea>
+      </div>
+    </div>
+
+    <script src="options.js"></script>
+  </body>
+</html>
