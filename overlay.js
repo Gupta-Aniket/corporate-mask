@@ -12,7 +12,6 @@ function createOverlay(targetEditable) {
       : targetEditable.innerText;
 
   overlay.innerHTML = `
- 
 <div class="cm-overlay-container">
     <div class="cm-overlay-header">
       <div class="cm-overlay-logo">😠🎭 Corporate Mask</div>
@@ -29,15 +28,21 @@ function createOverlay(targetEditable) {
       <button class="cm-modeBtn" data-mode="casual">Casual</button>
       <button class="cm-modeBtn" data-mode="f_it">🙂</button>
     </div>
-    </div>
+</div>
   `;
 
   document.body.appendChild(overlay);
+
+  // Initial positioning (bottom-right)
   overlay.style.position = "fixed";
-  overlay.style.top = "65%";
-  overlay.style.left = "90%";
-  overlay.style.transform = "translate(-50%, -50%)";
+  overlay.style.bottom = "90px";
+  overlay.style.right = "20px";
+  overlay.style.left = "auto";
+  overlay.style.top = "auto";
+  overlay.style.transform = "none";
   overlay.style.zIndex = "10005";
+  overlay.style.minWidth = "400px";
+  overlay.style.maxWidth = "90vw";
 
   overlay
     .querySelector(".cm-overlay-close")
@@ -60,14 +65,10 @@ function createOverlay(targetEditable) {
     generateBtn.innerText = "Generating...";
     spinner.innerHTML = '<div class="cm-spinner"></div>';
     spinner.style.display = "inline-block";
-
     modeButtons.style.display = "none";
 
     chrome.runtime.sendMessage(
-      {
-        action: "callGeminiAllModes",
-        userInput: userInput,
-      },
+      { action: "callGeminiAllModes", userInput: userInput },
       (response) => {
         generateBtn.innerText = "Regenerate";
         generateBtn.disabled = false;
@@ -78,13 +79,11 @@ function createOverlay(targetEditable) {
           overlay.remove();
           return;
         }
-
         if (response?.error) {
           showToast("😢 Something went wrong:\n\n" + response.error);
           overlay.remove();
           return;
         }
-
         if (!response?.result) {
           showToast("No content was returned by Gemini. Try again later.");
           overlay.remove();
@@ -97,7 +96,6 @@ function createOverlay(targetEditable) {
     );
   });
 
-  // Handle mode switching
   overlay.querySelectorAll(".cm-modeBtn").forEach((btn) => {
     btn.addEventListener("click", () => {
       const mode = btn.dataset.mode;
@@ -119,11 +117,22 @@ function makeOverlayDraggable(el) {
     posY = 0,
     startX = 0,
     startY = 0;
-  el.querySelector(".cm-overlay-header").style.cursor = "move";
-  el.querySelector(".cm-overlay-header").onmousedown = dragMouseDown;
+  const header = el.querySelector(".cm-overlay-header");
+  header.style.cursor = "move";
+  header.onmousedown = dragMouseDown;
 
   function dragMouseDown(e) {
     e.preventDefault();
+
+    // Before dragging, convert fixed bottom/right into top/left for free movement
+    if (el.style.position === "fixed") {
+      const rect = el.getBoundingClientRect();
+      el.style.top = `${rect.top}px`;
+      el.style.left = `${rect.left}px`;
+      el.style.bottom = "auto";
+      el.style.right = "auto";
+    }
+
     startX = e.clientX;
     startY = e.clientY;
     document.onmouseup = closeDrag;

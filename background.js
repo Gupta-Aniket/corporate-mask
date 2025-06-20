@@ -27,7 +27,8 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 async function testGeminiKey(apiKey) {
   const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
 
-  const dummyPrompt = "Test message: Please return a short success confirmation.";
+  const dummyPrompt =
+    "Test message: Please return a short success confirmation.";
 
   const res = await fetch(url, {
     method: "POST",
@@ -56,10 +57,14 @@ function formatFriendlyError(err) {
   if (typeof err === "string") return err;
 
   const message = err?.message || "Unknown error occurred.";
-  if (message.includes("429")) return "Daily quota limit exceeded. Try again tomorrow.";
-  if (message.includes("403")) return "Access denied. Check your API key billing settings.";
-  if (message.includes("401")) return "Unauthorized. Your API key is invalid or expired.";
-  if (message.includes("JSON")) return "Received an invalid response from Gemini.";
+  if (message.includes("429"))
+    return "Daily quota limit exceeded. Try again tomorrow.";
+  if (message.includes("403"))
+    return "Access denied. Check your API key billing settings.";
+  if (message.includes("401"))
+    return "Unauthorized. Your API key is invalid or expired.";
+  if (message.includes("JSON"))
+    return "Received an invalid response from Gemini.";
 
   return "Unexpected error: " + message;
 }
@@ -93,7 +98,10 @@ async function handleGeminiCall(userInput) {
 
   if (!raw) throw new Error("No content returned from Gemini.");
 
-  const cleaned = raw.replace(/^\s*```json\s*/i, "").replace(/```$/, "").trim();
+  const cleaned = raw
+    .replace(/^\s*```json\s*/i, "")
+    .replace(/```$/, "")
+    .trim();
 
   try {
     const json = JSON.parse(cleaned);
@@ -106,10 +114,10 @@ async function handleGeminiCall(userInput) {
 function buildPrompt(userInput) {
   return `
 Given the following message, generate 4 variants:
-- "formal": corporate Formal, highly professional tone polite for senior level managers etc. 
-- "semi_formal": corporate Semi-formal, polite for colleagues.
-- "casual": corporate Friendly casual internal tone.
-- "f_it": Brutally honest but still corporate-safe.
+- "formal": corporate pleasing, highly professional tone polite for senior level managers etc . 
+- "semi_formal": corporate pleasing Semi-formal, polite for colleagues.
+- "casual": corporate plesing Friendly casual internal tone.
+- "f_it": Brutally honest but still corporate-safe try to be pleasing.
 
 Output STRICT valid JSON with keys: "formal", "semi_formal", "casual", "f_it".
 Do not include any markdown, explanations or commentary. Just output raw valid JSON.

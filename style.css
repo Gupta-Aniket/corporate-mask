@@ -78,7 +78,7 @@
     linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%;
   background-attachment: fixed;
-  transition: all 0.3s ease;
+  /* transition: all 0.3s ease; */
 }
 
 @media (prefers-color-scheme: dark) {
@@ -110,7 +110,7 @@
   position: relative;
   overflow: hidden;
    transform: scale(1);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  /* transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); */
 }
 .cm-container-option{
   /* align-items: center; */
@@ -769,4 +769,8 @@ input[type="password"]::placeholder {
   opacity: 0;
   transform: scale(0);
   pointer-events: none;
+}
+
+.cm-body-blocklist{
+  display: none !important;
 }
