@@ -114,7 +114,7 @@ function injectGlobalButton() {
   });
 
   closeBtn.addEventListener("click", () => {
-    hideButton();
+    // hideButton();
     chrome.storage.sync.set({ showMask: false });
     showToast("👋 Corporate Mask is now disabled.");
   });
