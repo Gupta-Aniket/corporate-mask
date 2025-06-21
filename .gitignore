@@ -2,3 +2,6 @@ file_context.py
 fileContext.txt
 android
 ios
+*.zip
+build
+

@@ -104,6 +104,11 @@ document.addEventListener("DOMContentLoaded", () => {
       apiKeyInput.value = "";
     });
   });
+  getAndroidApp.addEventListener("click", () => {
+    chrome.tabs.create({
+      url: "https://github.com/Gupta-Aniket/corporate-mask/releases/download/android/Corporate.Mask.apk",
+    });
+  });
 
   showMaskToggle.addEventListener("change", () => {
     chrome.storage.sync.set({ showMask: showMaskToggle.checked });
