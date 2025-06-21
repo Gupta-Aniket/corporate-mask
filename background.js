@@ -113,16 +113,20 @@ async function handleGeminiCall(userInput) {
 
 function buildPrompt(userInput) {
   return `
-Given the following message, generate 4 variants:
-- "formal": corporate pleasing, highly professional tone polite for senior level managers etc . 
-- "semi_formal": corporate pleasing Semi-formal, polite for colleagues.
-- "casual": corporate plesing Friendly casual internal tone.
-- "f_it": Brutally honest but still corporate-safe try to be pleasing.
+    Given the following message, 
+    generate 4 variants:
+    - "formal":  highly professional tone polite for senior level managers etc . 
+    - "semi_formal": corporate pleasing, polite for colleagues.
+    - "casual": corporate plesing Friendly casual internal tone.
+    - "f_it": Brutally honest but still corporate-safe.
+    Sound pleasing
+    Not at all offensive
+    Then convert it to something positive
 
-Output STRICT valid JSON with keys: "formal", "semi_formal", "casual", "f_it".
-Do not include any markdown, explanations or commentary. Just output raw valid JSON.
+    Output STRICT valid JSON with keys: "formal", "semi_formal", "casual", "f_it".
+    Do not include any markdown, explanations or commentary. Just output raw valid JSON.
 
-Here is the message:
-"${userInput}"
+    Here is the message:
+    "${userInput}"
 `;
 }

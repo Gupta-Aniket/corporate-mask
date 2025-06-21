@@ -22,11 +22,36 @@ function createOverlay(targetEditable) {
       <button class="cm-convertBtn" id="generateBtn">Apply Mask</button>
       <span id="spinner" style="display:none;"></span>
     </div>
-    <div class="cm-mode-buttons" style="display:none; grid-template-columns: repeat(2, 1fr); gap: 8px; margin-top: 12px;">
-      <button class="cm-modeBtn" data-mode="formal">Formal</button>
-      <button class="cm-modeBtn" data-mode="semi_formal">Semi-Formal</button>
-      <button class="cm-modeBtn" data-mode="casual">Casual</button>
-      <button class="cm-modeBtn" data-mode="f_it">🙂</button>
+    <div class="cm-mode-buttons" style="display:none; grid-template-columns: repeat(1, 1fr); gap: 8px; margin-top: 12px;">
+      <div class="cm-modeBtn" data-mode="formal">
+        <div class="mode-icon">🎯</div>
+        <div class="mode-content">
+          <div class="mode-title">Formal</div>
+          <div class="mode-description">Professional and polite tone for seniors.</div>
+        </div>
+      </div>
+      <div class="cm-modeBtn" data-mode="semi_formal">
+        <div class="mode-icon">💬</div>
+        <div class="mode-content">
+          <div class="mode-title">Semi-Formal</div>
+          <div class="mode-description">Slightly more formal tone for colleagues.</div>
+        </div>
+      </div>
+      <div class="cm-modeBtn" data-mode="casual">
+        <div class="mode-icon">😉</div>
+        <div class="mode-content">
+          <div class="mode-title">Casual</div>
+          <div class="mode-description">Casual and friendly tone for colleagues.</div>
+        </div>
+      </div>
+      <div class="cm-modeBtn" data-mode="f_it">
+        <div class="mode-icon">🤬</div>
+        <div class="mode-content">
+          <div class="mode-title">F it</div>
+          <div class="mode-description">Brutally honest, still professional.</div>
+        </div>
+      </div>
+
     </div>
 </div>
   `;

@@ -774,3 +774,79 @@ input[type="password"]::placeholder {
 .cm-body-blocklist{
   display: none !important;
 }
+.cm-mode-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.cm-modeBtn {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  border-radius: 16px;
+  background: var(--background-primary);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  border: 1px solid var(--separator);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  font-family: inherit;
+  position: relative;
+}
+
+/* .cm-modeBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.15);
+}
+
+.cm-modeBtn:active {
+  transform: translateY(0);
+} */
+
+.cm-modeBtn .mode-icon {
+  flex-shrink: 0;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 16px;
+  font-size: 24px;
+  color: white;
+}
+
+.cm-modeBtn .mode-content {
+  flex-grow: 1;
+}
+
+.cm-modeBtn .mode-title {
+  font-weight: 700;
+  font-size: 17px;
+  color: var(--label-primary);
+  margin-bottom: 4px;
+}
+
+.cm-modeBtn .mode-description {
+  font-size: 15px;
+  color: var(--label-secondary);
+}
+
+/* Different color variants */
+/* 
+.cm-modeBtn[data-mode="formal"] .mode-icon {
+  background: #334FAC;
+}
+
+.cm-modeBtn[data-mode="semi_formal"] .mode-icon {
+  background: #667EEA;
+}
+
+.cm-modeBtn[data-mode="casual"] .mode-icon {
+  background: #FA709A;
+}
+
+.cm-modeBtn[data-mode="f_it"] .mode-icon {
+  background: #FF6B6B;
+} */
